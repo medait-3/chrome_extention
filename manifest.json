@@ -1,22 +1,17 @@
 {
-    "name": "MY First Extension",
-    "description": "Shows a menu item",
-    "version": "0.3",
-    "permissions": ["contextMenus", "activeTab", "downloads"],
-    "icons": {
-        "16": "16.png",
-        "48": "48.png",
-        "64": "64.png",
-        "128": "128.png"
+    "name": "Bulk Image Downloader",
+    "description": "Download every image on a web page",
+    "version": "0.1",
+    "permissions": ["<all_urls>", "tabs", "activeTab", "downloads"],
+    "browser_action": {
+        "default_popup": "popup/index.html"
     },
     "background": {
-        "scripts": ["background.js"]
+        "scripts": ["jquery-3.4.1.min.js", "background.js"]
     },
-    "content_scripts": [
-        {
-            "matches": ["*://www.google.com/*", "*://www.youtube.com/*"],
-            "js": ["index.js"]
-        }
-    ],
+    "content_scripts": [{
+        "matches": ["<all_urls>"],
+        "js": ["jquery-3.4.1.min.js", "content.js"]
+    }],
     "manifest_version": 2
 }
